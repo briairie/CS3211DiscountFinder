@@ -1,5 +1,3 @@
-#Mon Dec 06 13:14:14 EST 2021
-configuration*?=136EA25CE2E04380B118BFD20A72FEC0169101EB
+#Mon Dec 06 14:02:31 EST 2021
+configuration*?=1036E0459BBA9BFBFEC8D881C0440607A449022B
 module-resource*?\:https\://www.westga.edu/~dyoder/Checkstyle/suppressions.xml=564EFCB2A309CA8A142FA6873BF5B174CCA42FDC
-/Users/destiny/Desktop/CS3211DiscountFinder/src/main/java/edu/westga/cs3211/discountFinder/model/Item.java=1638813114254
-/Users/destiny/Desktop/CS3211DiscountFinder/src/main/java/edu/westga/cs3211/discountFinder/model/Database.java=1638813120749
