@@ -1,5 +1,5 @@
-edu\westga\cs3211\discountFinder\Main.class
-edu\westga\cs3211\discountFinder\model\DiscountFinder.class
-edu\westga\cs3211\discountFinder\model\Item.class
-edu\westga\cs3211\discountFinder\view\codebehind\MainWindow.class
-edu\westga\cs3211\discountFinder\model\Database.class
+edu/westga/cs3211/discountFinder/view/codebehind/MainWindow.class
+edu/westga/cs3211/discountFinder/model/Item.class
+edu/westga/cs3211/discountFinder/Main.class
+edu/westga/cs3211/discountFinder/model/DiscountFinder.class
+edu/westga/cs3211/discountFinder/model/Database.class

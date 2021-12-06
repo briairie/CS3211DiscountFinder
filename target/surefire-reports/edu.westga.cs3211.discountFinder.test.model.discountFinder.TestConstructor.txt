@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: edu.westga.cs3211.discountFinder.test.model.discountFinder.TestConstructor
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.201 s - in edu.westga.cs3211.discountFinder.test.model.discountFinder.TestConstructor
