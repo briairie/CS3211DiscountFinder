@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Item.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample-Code-Coverage-Project</a> &gt; <a href="index.source.html" class="el_package">edu.westga.cs3211.discountFinder.model</a> &gt; <span class="el_source">Item.java</span></div><h1>Item.java</h1><pre class="source lang-java linenums">package edu.westga.cs3211.discountFinder.model;
+
+import java.text.NumberFormat;
+
+/**
+ * Item class
+ * 
+ * @author Brianna Irie
+ * @version Fall 2021
+ *
+ */
+public class Item {
+	private String name;
+	private double marketPrice;
+	private double currentPrice;
+	private String seller;
+	
+	/**
+	 * Instantiates new Item object.
+	 *
+	 * preconditions: name != null  AND !name.isEmpty() AND seller != null AND !seller.isEmpty()
+	 * postconditions: none
+	 * @param name				the name
+	 * @param marketPrice		the market price
+	 * @param currentPrice		the current price
+	 * @param seller			the seller
+	 */
+<span class="fc" id="L28">	public Item(String name, double marketPrice, double currentPrice, String seller) {</span>
+<span class="fc bfc" id="L29" title="All 4 branches covered.">		if (name == null || name.isEmpty()) {</span>
+<span class="fc" id="L30">			throw new IllegalArgumentException(&quot;Name cannot be null or empty&quot;);</span>
+		}
+		
+<span class="fc bfc" id="L33" title="All 4 branches covered.">		if (seller == null || seller.isEmpty()) {</span>
+<span class="fc" id="L34">			throw new IllegalArgumentException(&quot;Seller cannot be null or empty&quot;);</span>
+		}
+		
+<span class="fc" id="L37">		this.name = name;</span>
+<span class="fc" id="L38">		this.marketPrice = marketPrice;</span>
+<span class="fc" id="L39">		this.currentPrice = currentPrice;</span>
+<span class="fc" id="L40">		this.seller = seller;</span>
+<span class="fc" id="L41">	}</span>
+
+	/**
+	 * Gets the name
+	 *
+	 * preconditions: none
+	 * postconditions: none
+	 * @return the name
+	 */
+	public String getName() {
+<span class="fc" id="L51">		return this.name;</span>
+	}
+
+	/**
+	 * Gets the Market Price
+	 *
+	 * preconditions: none
+	 * postconditions: none
+	 * @return the price
+	 */
+	public double getMarketPrice() {
+<span class="fc" id="L62">		return this.marketPrice;</span>
+	}
+	
+	/**
+	 * Gets the Current Price
+	 *
+	 * preconditions: none
+	 * postconditions: none
+	 * @return the price
+	 */
+	public double getCurrentPrice() {
+<span class="fc" id="L73">		return this.currentPrice;</span>
+	}
+	
+	/**
+	 * Gets the Seller
+	 *
+	 * preconditions: none
+	 * postconditions: none
+	 * @return the seller
+	 */
+	public String getSeller() {
+<span class="fc" id="L84">		return this.seller;</span>
+	}
+	
+	/**
+	 * Returns the discount
+	 * 
+	 * preconditions:  none
+	 * postconditions: none
+	 * @return the discount
+	 */
+	public double getDiscount() {
+<span class="fc" id="L95">		return this.currentPrice / this.marketPrice;	</span>
+	}
+	
+	private String formatPercent(double decimal) {
+<span class="nc" id="L99">		NumberFormat formatter = NumberFormat.getPercentInstance();</span>
+<span class="nc" id="L100">		return formatter.format(decimal);</span>
+	}
+	
+	private String formatMoney(double amount) {
+<span class="nc" id="L104">		NumberFormat formatter = NumberFormat.getCurrencyInstance();</span>
+<span class="nc" id="L105">		return formatter.format(amount);</span>
+	}
+		
+	@Override
+	public String toString() {
+<span class="nc" id="L110">		String discount = this.formatPercent(this.getDiscount());</span>
+<span class="nc" id="L111">		String marketPriceString = this.formatMoney(this.marketPrice);</span>
+<span class="nc" id="L112">		String currentPriceString = this.formatMoney(this.currentPrice);</span>
+<span class="nc" id="L113">		return this.name + &quot; &quot; + marketPriceString + &quot; &quot; + currentPriceString + &quot; &quot; + discount + &quot; &quot; + this.seller;</span>
+	}
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

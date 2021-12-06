@@ -26,12 +26,12 @@ public class Item {
 	 * @param seller			the seller
 	 */
 	public Item(String name, double marketPrice, double currentPrice, String seller) {
-		if(name == null || name.isEmpty()) {
+		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name cannot be null or empty");
 		}
 		
-		if(seller == null || seller.isEmpty()) {
-			throw new IllegalArgumentException("Name cannot be null or empty");
+		if (seller == null || seller.isEmpty()) {
+			throw new IllegalArgumentException("Seller cannot be null or empty");
 		}
 		
 		this.name = name;
@@ -70,7 +70,7 @@ public class Item {
 	 * @return the price
 	 */
 	public double getCurrentPrice() {
-		return currentPrice;
+		return this.currentPrice;
 	}
 	
 	/**
