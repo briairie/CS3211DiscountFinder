@@ -14,6 +14,7 @@ public class Item {
 	private double marketPrice;
 	private double currentPrice;
 	private String seller;
+	private String category;
 	
 	/**
 	 * Instantiates new Item object.
@@ -25,7 +26,7 @@ public class Item {
 	 * @param currentPrice		the current price
 	 * @param seller			the seller
 	 */
-	public Item(String name, double marketPrice, double currentPrice, String seller) {
+	public Item(String name, double marketPrice, double currentPrice, String seller,  String category) {
 		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name cannot be null or empty");
 		}
@@ -34,10 +35,15 @@ public class Item {
 			throw new IllegalArgumentException("Seller cannot be null or empty");
 		}
 		
+		if (category == null || category.isEmpty()) {
+			throw new IllegalArgumentException("Category cannot be null or empty");
+		}
+		
 		this.name = name;
 		this.marketPrice = marketPrice;
 		this.currentPrice = currentPrice;
 		this.seller = seller;
+		this.category = category;
 	}
 
 	/**
@@ -93,6 +99,10 @@ public class Item {
 	 */
 	public double getDiscount() {
 		return this.currentPrice / this.marketPrice;	
+	}
+	
+	public String getCategory() {
+		return this.category;
 	}
 	
 	private String formatPercent(double decimal) {

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="99.0" minWidth="160.0" prefHeight="423.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs3211.discountFinder.view.codebehind.MainWindow">
+<AnchorPane minHeight="99.0" minWidth="160.0" prefHeight="423.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs3211.discountFinder.view.codebehind.MainWindow">
    <children>
       <TextField fx:id="searchbar" layoutX="14.0" layoutY="37.0" onAction="#filterName" prefHeight="27.0" prefWidth="315.0" />
       <Button fx:id="addFilterButton" layoutX="110.0" layoutY="79.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Add Filter" />
@@ -19,6 +19,6 @@
          </font></Label>
       <ListView fx:id="resultListView" layoutX="12.0" layoutY="158.0" prefHeight="251.0" prefWidth="370.0" />
       <Button layoutX="339.0" layoutY="37.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" text="*" />
-      <ComboBox layoutX="197.0" layoutY="79.0" prefHeight="27.0" prefWidth="184.0" />
+      <ComboBox fx:id="filterComboBox" layoutX="197.0" layoutY="79.0" onAction="#addFilter" prefHeight="27.0" prefWidth="184.0" />
    </children>
 </AnchorPane>
