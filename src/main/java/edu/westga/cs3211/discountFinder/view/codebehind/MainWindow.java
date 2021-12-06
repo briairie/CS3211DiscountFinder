@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -22,6 +23,9 @@ import edu.westga.cs3211.discountFinder.model.Item;
  */
 public class MainWindow {       
 	private DiscountFinder discountFinder;
+	private String nameFilter;
+	private String sellerFilter;
+	private String categoryFilter;
 	
 	public static final String NO_MATCHES_TEXT = "No matches";
 
@@ -39,14 +43,22 @@ public class MainWindow {
 
 	@FXML
 	private ListView<Item> resultListView;
+	
+    @FXML
+    private ComboBox<String> filterComboBox;
 
 	@FXML
 	void filterName(ActionEvent event) {
 		this.filterByName();
 	}
+	
+	@FXML
+    void addFilter(ActionEvent event) {
+		
+    }
 
 		private void filterByName() {
-			Collection<Item> filteredItems = this.discountFinder.filter(this.searchbar.textProperty().getValue(),"", "");
+			Collection<Item> filteredItems = this.discountFinder.filter(this.searchbar.textProperty().getValue(),"", "","");
 	    	this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
 		}
 	

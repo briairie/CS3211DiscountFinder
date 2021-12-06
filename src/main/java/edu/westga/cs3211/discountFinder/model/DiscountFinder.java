@@ -44,9 +44,9 @@ public class DiscountFinder {
 	 * @param name the name
 	 * @return filter list
 	 */
-	public Collection<Item> filter(String name, String category, String location){
+	public Collection<Item> filter(String name, String seller, String category, String location){
 		Collection<Item> filtered = filterByName(name, this.database);
-		filtered = this.filterBySeller(name, filtered);
+		filtered = this.filterBySeller(seller, filtered);
 		filtered = this.filterByCategory(category, filtered);
 		
 		return filtered;

@@ -26,7 +26,7 @@ public class Item {
 	 * @param currentPrice		the current price
 	 * @param seller			the seller
 	 */
-	public Item(String name, double marketPrice, double currentPrice, String seller) {
+	public Item(String name, double marketPrice, double currentPrice, String seller,  String category) {
 		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name cannot be null or empty");
 		}
@@ -35,31 +35,15 @@ public class Item {
 			throw new IllegalArgumentException("Seller cannot be null or empty");
 		}
 		
+		if (category == null || category.isEmpty()) {
+			throw new IllegalArgumentException("Category cannot be null or empty");
+		}
+		
 		this.name = name;
 		this.marketPrice = marketPrice;
 		this.currentPrice = currentPrice;
 		this.seller = seller;
-	}
-	
-	/**
-	 * Instantiates new Item object.
-	 *
-	 * preconditions: name != null  AND !name.isEmpty() AND seller != null AND !seller.isEmpty()
-	 * postconditions: none
-	 * @param name				the name
-	 * @param marketPrice		the market price
-	 * @param currentPrice		the current price
-	 * @param seller			the seller
-	 * @param category 			the category
-	 */
-	public Item(String name, double marketPrice, double currentPrice, String seller, String category) {
-		this(name, marketPrice, currentPrice, seller);
-		
-		if(category != null) {
-			this.category = category;
-		} else {
-			this.category = "";
-		}
+		this.category = category;
 	}
 
 	/**

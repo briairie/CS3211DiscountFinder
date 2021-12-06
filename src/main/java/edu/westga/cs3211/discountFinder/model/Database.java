@@ -21,10 +21,10 @@ public class Database {
 	 */
 	public Database() {
 		this.data = new ArrayList<Item>();
-		this.data.add(new Item("Flower Pot Small", 3.00, 1.50, "Target", "Outdoor"));
+		this.data.add(new Item("Flower Pot Small", 3.00, 1.50, "Target", "Decor"));
 		this.data.add(new Item("Flower Pot Large", 10.00, 8.75, "Target", "Outdoor"));
 		this.data.add(new Item("Flower Pot Small", 20.00, 15.00, "Pottery Barn","Decor"));
-		this.data.add(new Item("Flower Pot Large", 100.00, 82.50, "Pottery Barn","Decor"));
+		this.data.add(new Item("Flower Pot Large", 100.00, 82.50, "Pottery Barn","Outdoor"));
 		this.data.add(new Item("Pizza", 5.00, 2.50, "Target", "Grocery"));
 		this.data.add(new Item("Califlower Pizza", 10.00, 7.75, "Target","Grocery"));
 		
