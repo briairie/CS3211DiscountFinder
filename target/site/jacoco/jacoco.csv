@@ -1,6 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Sample-Code-Coverage-Project,edu.westga.cs3211.discountFinder.model,Database,4,77,0,0,2,10,1,2,1,2
-Sample-Code-Coverage-Project,edu.westga.cs3211.discountFinder.model,Item,36,53,0,8,8,15,3,10,3,6
-Sample-Code-Coverage-Project,edu.westga.cs3211.discountFinder.model,DiscountFinder,0,41,0,2,0,13,0,6,0,5
-Sample-Code-Coverage-Project,edu.westga.cs3211.discountFinder.view.codebehind,MainWindow,42,0,0,0,12,0,5,0,5,0
-Sample-Code-Coverage-Project,edu.westga.cs3211.discountFinder,Main,27,0,0,0,9,0,3,0,3,0
