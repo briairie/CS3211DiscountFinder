@@ -10,7 +10,7 @@ import java.util.Collection;
  */
 public class Database {
 	private Collection<Item> data;
-	private Collection<String> sellers;
+	private Collection<Seller> sellers;
 	private Collection<String> categories;
 	
 	/**
@@ -20,23 +20,28 @@ public class Database {
 	 * postconditions: none
 	 */
 	public Database() {
-		this.data = new ArrayList<Item>();
-		this.data.add(new Item("Flower Pot Small", 3.00, 1.50, "Target", "Decor"));
-		this.data.add(new Item("Flower Pot Large", 10.00, 8.75, "Target", "Outdoor"));
-		this.data.add(new Item("Flower Pot Small", 20.00, 15.00, "Pottery Barn","Decor"));
-		this.data.add(new Item("Flower Pot Large", 100.00, 82.50, "Pottery Barn","Outdoor"));
-		this.data.add(new Item("Pizza", 5.00, 2.50, "Target", "Grocery"));
-		this.data.add(new Item("Califlower Pizza", 10.00, 7.75, "Target","Grocery"));
+		this.sellers = new ArrayList<Seller>();
 		
-		this.sellers = new ArrayList<String>();
+		Seller store1 = new Seller("Target", 32);
+		Seller store2 = new Seller("Pottery Barn", 70);
+		Seller store3 = new Seller("Kroger", 2);
+		
+		this.sellers.add(store1);
+		this.sellers.add(store2);
+		this.sellers.add(store3);
+		
+		this.data = new ArrayList<Item>();
+		this.data.add(new Item("Flower Pot Small", 3.00, 1.50, store1, "Decor"));
+		this.data.add(new Item("Flower Pot Large", 10.00, 8.75, store1, "Outdoor"));
+		this.data.add(new Item("Flower Pot Small", 20.00, 15.00, store2,"Decor"));
+		this.data.add(new Item("Flower Pot Large", 100.00, 82.50, store2,"Outdoor"));
+		this.data.add(new Item("Pizza", 5.00, 2.50, store3, "Grocery"));
+		this.data.add(new Item("Califlower Pizza", 10.00, 7.75, store3,"Grocery"));
+		
+		
 		this.categories = new ArrayList<String>();
 		for (Item item : this.data) {
-			String seller = item.getSeller();
 			String category = item.getCategory();
-			
-			if(!this.sellers.contains(seller)) {
-				this.sellers.add(seller);
-			}
 			
 			if(!this.categories.contains(category)) {
 				this.categories.add(category);
@@ -51,7 +56,7 @@ public class Database {
 	 * postconditions: none
 	 * @return the sellers
 	 */
-	public Collection<String> getSellers() {
+	public Collection<Seller> getSellers() {
 		return sellers;
 	}
 

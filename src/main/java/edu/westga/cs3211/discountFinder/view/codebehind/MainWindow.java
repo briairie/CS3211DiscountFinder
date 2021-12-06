@@ -26,6 +26,7 @@ public class MainWindow {
 	private String nameFilter = "";
 	private String sellerFilter = "";
 	private String categoryFilter = "";
+	private double locationFilter = 0;
 
 	public static final String NO_MATCHES_TEXT = "No matches";
 
@@ -60,8 +61,8 @@ public class MainWindow {
 	}
 
 	private void filter() {
-		Collection<Item> filteredItems = this.discountFinder.filter(this.nameFilter, this.sellerFilter, this.categoryFilter,
-				"");
+		Collection<Item> filteredItems = this.discountFinder.filter(this.nameFilter, this.sellerFilter,
+				this.categoryFilter, this.locationFilter);
 		this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
 	}
 
