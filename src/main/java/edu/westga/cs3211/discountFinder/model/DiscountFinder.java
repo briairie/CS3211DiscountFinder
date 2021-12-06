@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
  */
 public class DiscountFinder {
 	private Collection<Item> database;
+	private Collection<String> sellers;
+	private Collection<String> category;
+	private Collection<String> location;
 	
 	/**
 	 * 
@@ -20,7 +23,11 @@ public class DiscountFinder {
 	 * postconditions: none
 	 */
 	public DiscountFinder() {
-		this.database = new Database().data;
+		Database db = new Database();
+		
+		this.database = db.getData();
+		this.sellers = db.getSellers();
+		this.category = db.getCategories();
 	}
 	
 	public DiscountFinder(Collection<Item> data) {
@@ -29,21 +36,51 @@ public class DiscountFinder {
 	
 	
 	/**
-	 * Returns list of items filtered by name
+	 * Returns list of items filtered by name, category and location
 	 *
-	 * preconditions: name != null
+	 * preconditions: name != null && category != null && location != null
 	 * postconditions: none
 	 * @param name the name
 	 * @return filter list
 	 */
-	public Collection<Item> filter(String name){
+	public Collection<Item> filter(String name, String category, String location){
+		Collection<Item> filtered = filterByName(name, this.database);
+		filtered = this.filterBySeller(name, filtered);
+		filtered = this.filterByCategory(category, filtered);
+		
+		return filtered;
+	}
+	
+	private Collection<Item> filterByName(String name, Collection<Item> items){
 		if(name == null) {
 			throw new IllegalArgumentException("name cannot be null");
 		}
 		
-		return this.database
+		return items
 				.stream()
 				.filter(item -> item.getName().toLowerCase().contains(name.toLowerCase()))
+				.collect(Collectors.toList());
+	}
+	
+	private Collection<Item> filterBySeller(String seller, Collection<Item> items){
+		if(seller == null) {
+			throw new IllegalArgumentException("seller cannot be null");
+		}
+		
+		return items
+				.stream()
+				.filter(item -> item.getSeller().toLowerCase().contains(seller.toLowerCase()))
+				.collect(Collectors.toList());
+	}
+
+	private Collection<Item> filterByCategory(String category, Collection<Item> items){
+		if(category == null) {
+			throw new IllegalArgumentException("seller cannot be null");
+		}
+		
+		return items
+				.stream()
+				.filter(item -> item.getCategory().toLowerCase().contains(category.toLowerCase()))
 				.collect(Collectors.toList());
 	}
 	
@@ -56,5 +93,41 @@ public class DiscountFinder {
 	 */
 	public Collection<Item> getItems(){
 		return this.database;
+	}
+
+	/**
+	 * Gets the sellers 
+	 *
+	 * preconditions:  none
+	 * postconditions: none
+	 *
+	 * @return the sellers
+	 */
+	public Collection<String> getSellers() {
+		return sellers;
+	}
+
+	/**
+	 * Gets the category 
+	 *
+	 * preconditions:  none
+	 * postconditions: none
+	 *
+	 * @return the category
+	 */
+	public Collection<String> getCategory() {
+		return category;
+	}
+
+	/**
+	 * Gets the location 
+	 *
+	 * preconditions:  none
+	 * postconditions: none
+	 *
+	 * @return the location
+	 */
+	public Collection<String> getLocation() {
+		return location;
 	}
 }

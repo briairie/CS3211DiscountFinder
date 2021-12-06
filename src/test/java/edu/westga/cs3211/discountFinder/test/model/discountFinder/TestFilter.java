@@ -32,14 +32,14 @@ class TestFilter {
 	@Test
 	void testNullName() {
 		assertThrows(Exception.class, ()->{
-			finder.filter(null);	
+			finder.filter(null, "", "");	
 		});
 		
 	}
 
 	@Test
 	void testPartialName() {
-		Collection<Item> items = finder.filter("pi");
+		Collection<Item> items = finder.filter("pi","","");
 		assertAll(() ->{
 			assertEquals(3, items.size());
 		});
@@ -47,14 +47,14 @@ class TestFilter {
 
 	@Test
 	void testFullName() {
-		Collection<Item> items = finder.filter("Califlower Pizza");
+		Collection<Item> items = finder.filter("Califlower Pizza","","");
 		
 		assertEquals(1, items.size());
 	}
 	
 	@Test
 	void testNoMatch() {
-		Collection<Item> items = finder.filter("Califnia Pizza");
+		Collection<Item> items = finder.filter("Califnia Pizza","","");
 		
 		assertEquals(0, items.size());
 	}

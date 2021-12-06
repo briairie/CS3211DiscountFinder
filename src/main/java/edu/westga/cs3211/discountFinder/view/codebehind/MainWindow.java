@@ -46,7 +46,7 @@ public class MainWindow {
 	    }
 
 		private void filterByName() {
-			Collection<Item> filteredItems = discountFinder.filter(this.searchbar.textProperty().getValue());
+			Collection<Item> filteredItems = discountFinder.filter(this.searchbar.textProperty().getValue(),"", "");
 	    	this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
 		}
 	

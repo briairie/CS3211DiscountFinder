@@ -14,6 +14,7 @@ public class Item {
 	private double marketPrice;
 	private double currentPrice;
 	private String seller;
+	private String category;
 	
 	/**
 	 * Instantiates new Item object.
@@ -38,6 +39,27 @@ public class Item {
 		this.marketPrice = marketPrice;
 		this.currentPrice = currentPrice;
 		this.seller = seller;
+	}
+	
+	/**
+	 * Instantiates new Item object.
+	 *
+	 * preconditions: name != null  AND !name.isEmpty() AND seller != null AND !seller.isEmpty()
+	 * postconditions: none
+	 * @param name				the name
+	 * @param marketPrice		the market price
+	 * @param currentPrice		the current price
+	 * @param seller			the seller
+	 * @param category 			the category
+	 */
+	public Item(String name, double marketPrice, double currentPrice, String seller, String category) {
+		this(name, marketPrice, currentPrice, seller);
+		
+		if(category != null) {
+			this.category = category;
+		} else {
+			this.category = "";
+		}
 	}
 
 	/**
@@ -93,6 +115,10 @@ public class Item {
 	 */
 	public double getDiscount() {
 		return this.currentPrice / this.marketPrice;	
+	}
+	
+	public String getCategory() {
+		return this.category;
 	}
 	
 	private String formatPercent(double decimal) {
