@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import edu.westga.cs3211.discountFinder.model.DiscountFinder;
@@ -58,12 +57,25 @@ public class MainWindow {
 		this.sellerFilter = this.filterComboBox.getValue();
 		this.filter();
 	}
+	
+	@FXML
+    void clearFilters(ActionEvent event) {
+		this.nameFilter = "";
+		this.sellerFilter = "";
+		this.categoryFilter = "";
+		
+		this.filterComboBox.setValue("");
+		
+		this.filter();
+    }
 
 	private void filter() {
 		Collection<Item> filteredItems = this.discountFinder.filter(this.nameFilter, this.sellerFilter, this.categoryFilter,
 				"");
 		this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
 	}
+	
+	
 
 	/**
 	 * Handle initialization checks for the JavaFX components, and perform any
