@@ -68,7 +68,7 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.6</version>
 				<configuration>
-					<mainClass>edu.westga.cs3211.hi_low_game.Main</mainClass>
+					<mainClass>edu.westga.cs3211.discountFinder.Main</mainClass>
 				</configuration>
 			</plugin>
 			
@@ -81,7 +81,7 @@
 							<addClasspath>true</addClasspath>
 							<mainClass>
 								<!-- The main class for launching the app -->
-								edu.westga.cs3211.hi_low_game.Main
+								edu.westga.cs3211.discountFinder.Main
 							</mainClass>
 						</manifest>
 					</archive>
@@ -121,11 +121,11 @@
 								<rule>
 									<element>PACKAGE</element>
 									<!--includes>
-										<include>edu.westga.cs3211.hi_low_game.model</include>
+										<include>edu.westga.cs3211.discountFinder.model</include>
 									</includes-->
 									<excludes>
-										<exclude>edu.westga.cs3211.hi_low_game.view.codebehind</exclude>
-										<exclude>edu.westga.cs3211.hi_low_game</exclude>
+										<exclude>edu.westga.cs3211.discountFinder.view.codebehind</exclude>
+										<exclude>edu.westga.cs3211.discountFinder</exclude>
 									</excludes>
 									<limits>
 										<limit>
