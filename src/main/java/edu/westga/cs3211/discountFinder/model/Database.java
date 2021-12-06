@@ -9,7 +9,7 @@ import java.util.Collection;
  * @version Fall 2021
  */
 public class Database {
-	Collection<Item> data;
+	private Collection<Item> data;
 	
 	/**
 	 * Instantiates new Database object.
@@ -36,5 +36,17 @@ public class Database {
 	 */
 	public Collection<Item> getData() {
 		return this.data;
+	}
+	
+	/**
+	 * Sets the data
+	 *
+	 * @preconditions: none
+	 * @postconditions: none
+	 * 
+	 * @param data The data to update 
+	 */
+	public void setData(Collection<Item> data) {
+		this.data = data;
 	}
 }

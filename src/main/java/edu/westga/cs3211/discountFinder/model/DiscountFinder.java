@@ -2,6 +2,7 @@ package edu.westga.cs3211.discountFinder.model;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 /** 
  * Discount Finder
@@ -20,7 +21,7 @@ public class DiscountFinder {
 	 * postconditions: none
 	 */
 	public DiscountFinder() {
-		this.database = new Database().data;
+		this.database = new ArrayList<Item>();
 	}
 	
 	public DiscountFinder(Collection<Item> data) {
@@ -36,8 +37,8 @@ public class DiscountFinder {
 	 * @param name the name
 	 * @return filter list
 	 */
-	public Collection<Item> filter(String name){
-		if(name == null) {
+	public Collection<Item> filter(String name) {
+		if (name == null) {
 			throw new IllegalArgumentException("name cannot be null");
 		}
 		
@@ -54,7 +55,7 @@ public class DiscountFinder {
 	 * postconditions: none
 	 * @return collection of items
 	 */
-	public Collection<Item> getItems(){
+	public Collection<Item> getItems() {
 		return this.database;
 	}
 }

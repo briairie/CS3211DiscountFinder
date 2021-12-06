@@ -16,7 +16,7 @@ class TestConstructor {
 		DiscountFinder finder = new DiscountFinder();
 		Database database = new Database();
 		
-		assertTrue(finder.getItems().size() == database.getData().size());
+		assertTrue(finder.getItems().size() == 0);
 	}
 
 }
