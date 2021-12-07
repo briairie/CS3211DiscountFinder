@@ -25,30 +25,30 @@ public class MainWindow {
 	
 	public static final String NO_MATCHES_TEXT = "No matches";
 
-	 	@FXML
-	    private TextField searchbar;
+	@FXML
+	private TextField searchbar;
 
-	    @FXML
-	    private Button addFilterButton;
+	@FXML
+	private Button addFilterButton;
 
-	    @FXML
-	    private Button clearFilter;
+	@FXML
+	private Button clearFilter;
 
-	    @FXML
-	    private Label itemLabel;
+	@FXML
+	private Label itemLabel;
 
-	    @FXML
-	    private ListView<Item> resultListView;
+	@FXML
+	private ListView<Item> resultListView;
 
-	    @FXML
-	    void filterName(ActionEvent event) {
-	    	this.filterByName();
-	    }
+	@FXML
+	void filterName(ActionEvent event) {
+		this.filterByName();
+	}
 
-		private void filterByName() {
-			Collection<Item> filteredItems = discountFinder.filter(this.searchbar.textProperty().getValue());
-	    	this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
-		}
+	private void filterByName() {
+		Collection<Item> filteredItems = this.discountFinder.filter(this.searchbar.textProperty().getValue());
+	    this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
+	}
 	
 	/**
 	 * Handle initialization checks for the JavaFX components, and perform any
@@ -61,8 +61,8 @@ public class MainWindow {
 	@FXML
 	public void initialize() {
 		this.discountFinder = new DiscountFinder();
-		this.resultListView.setItems(FXCollections.observableArrayList(discountFinder.getItems()));
-		this.searchbar.textProperty().addListener((observable, oldValue, newValue) ->{
+		this.resultListView.setItems(FXCollections.observableArrayList(this.discountFinder.getItems()));
+		this.searchbar.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.filterByName();
 		});
 	}
