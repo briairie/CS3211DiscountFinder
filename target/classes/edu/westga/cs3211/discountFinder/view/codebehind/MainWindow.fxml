@@ -12,8 +12,8 @@
 <AnchorPane minHeight="99.0" minWidth="160.0" prefHeight="480.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs3211.discountFinder.view.codebehind.MainWindow">
    <children>
       <TextField fx:id="searchbar" layoutX="14.0" layoutY="37.0" onAction="#filterName" prefHeight="27.0" prefWidth="315.0" />
-      <Button fx:id="addFilterButton" layoutX="110.0" layoutY="79.0" mnemonicParsing="false" onAction="#addFilter" prefHeight="26.0" prefWidth="80.0" text="Add Filter" />
-      <Button fx:id="clearFilter" layoutX="12.0" layoutY="79.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="Clear Filters" />
+      <Button fx:id="addFilterButton" layoutX="110.0" layoutY="79.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Add Filter" onAction="#addFilter" />
+      <Button fx:id="clearFilter" layoutX="12.0" layoutY="79.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="Clear Filters" onAction="#clearFilters" />
       <Label fx:id="itemLabel" alignment="CENTER" layoutX="68.0" layoutY="5.0" prefHeight="18.0" prefWidth="258.0" text="Discount Finder">
          <font>
             <Font size="16.0" />
