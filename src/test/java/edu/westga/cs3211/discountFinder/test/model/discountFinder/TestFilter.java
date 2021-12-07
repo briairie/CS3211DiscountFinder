@@ -71,7 +71,7 @@ class TestFilter {
 	void testPartialSeller() {
 		Collection<Item> items = finder.filter("","Tar","", 0);
 		assertAll(() ->{
-			assertEquals(4, items.size());
+			assertEquals(2, items.size());
 		});
 	}
 
@@ -79,7 +79,7 @@ class TestFilter {
 	void testFullSeller() {
 		Collection<Item> items = finder.filter("","Target","", 0);
 		
-		assertEquals(4, items.size());
+		assertEquals(2, items.size());
 	}
 	
 	@Test
