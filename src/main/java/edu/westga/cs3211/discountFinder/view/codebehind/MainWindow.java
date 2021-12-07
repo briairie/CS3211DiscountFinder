@@ -3,6 +3,7 @@ package edu.westga.cs3211.discountFinder.view.codebehind;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -68,6 +69,24 @@ public class MainWindow {
 
 	@FXML
 	private ComboBox<String> filterComboBox;
+	
+	@FXML
+    private Button btnStoreFilter;
+
+    @FXML
+    private Button btnCategoryFilter;
+
+    @FXML
+    private Button btnDistanceFilter;
+    
+    @FXML
+    private RadioButton storeRadioBtn;
+
+    @FXML
+    private RadioButton categoryRadioBtn;
+
+    @FXML
+    private RadioButton distanceRadioBtn;
 
 	@FXML
 	void filterName(ActionEvent event) {
@@ -126,7 +145,44 @@ public class MainWindow {
 		this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
 	}
 	
-	
+	@FXML
+    void deleteCategoryFilter(ActionEvent event) {
+		this.filterComboBox.setValue("");
+		this.categoryFilter = "";
+		this.filter();
+		this.btnCategoryFilter.visibleProperty().set(false);
+    }
+
+    @FXML
+    void deleteDistanceFilter(ActionEvent event) {
+    	this.filterComboBox.setValue("");
+    	this.locationFilter = 0;
+		this.filter();
+		this.btnDistanceFilter.visibleProperty().set(false);
+    }
+
+    @FXML
+    void deleteStoreFilter(ActionEvent event) {
+    	this.filterComboBox.setValue("");
+    	this.sellerFilter = "";
+		this.filter();
+		this.filterPane1.visibleProperty().set(false);
+    }	
+    
+    @FXML
+    void categoryFilterTypeSelected(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void distanceFilterTypeSelected(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void storeFilterTypeSelected(ActionEvent event) {
+
+    }
 
 	/**
 	 * Handle initialization checks for the JavaFX components, and perform any
