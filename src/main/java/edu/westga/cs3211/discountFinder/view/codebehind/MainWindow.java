@@ -118,13 +118,6 @@ public class MainWindow {
 		this.filterLabel2.textProperty().setValue("Category: " + this.categoryFilter);
 		this.filterPane2.visibleProperty().set(true);
 	}
-	
-	private void addDistanceFilter() {
-		
-		this.locationFilter = Integer.parseInt(this.filterComboBox.getValue());
-		this.filterLabel3.textProperty().setValue("Distance: " + this.locationFilter);
-		this.filterPane3.visibleProperty().set(true);
-	}
 
 	private boolean isFilterEmpty() {
 		String filter = this.filterComboBox.getValue();
@@ -133,8 +126,16 @@ public class MainWindow {
 
 	@FXML
 	void addFilter(ActionEvent event) {
-		this.addSellerFilter();
+		if (this.categoryRadioBtn.isSelected()) {
+			this.addCategoryFilter();
+			this.categoryRadioBtn.setSelected(false);
+		}
+		if (this.storeRadioBtn.isSelected()) {
+			this.addSellerFilter();
+			this.storeRadioBtn.setSelected(false);
+		}
 		this.filter();
+		this.filterComboBox.setItems(null);
 	}
 	
 	@FXML
@@ -163,7 +164,7 @@ public class MainWindow {
 		this.filterComboBox.setValue("");
 		this.categoryFilter = "";
 		this.filter();
-		this.btnCategoryFilter.visibleProperty().set(false);
+		this.filterPane2.visibleProperty().set(false);
     }
 
     @FXML
@@ -171,7 +172,7 @@ public class MainWindow {
     	this.filterComboBox.setValue("");
     	this.locationFilter = 0;
 		this.filter();
-		this.btnDistanceFilter.visibleProperty().set(false);
+		this.filterPane3.visibleProperty().set(false);
     }
 	
 	@FXML
@@ -184,17 +185,12 @@ public class MainWindow {
 	
 	@FXML
     void categoryFilterTypeSelected(ActionEvent event) {
-
-    }
-    
-    @FXML
-    void distanceFilterTypeSelected(ActionEvent event) {
-
+		this.filterComboBox.setItems(FXCollections.observableArrayList(this.discountFinder.getCategories()));
     }
     
     @FXML
     void storeFilterTypeSelected(ActionEvent event) {
-
+    	this.selectStoreList();
     }
 	
 
@@ -216,7 +212,8 @@ public class MainWindow {
 		this.searchbar.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.filter();
 		});
-		selectStoreList();
+		
+		
 	}
 
 	private void selectStoreList() {

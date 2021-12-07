@@ -1,5 +1,6 @@
 package edu.westga.cs3211.discountFinder.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +17,7 @@ public class DiscountFinder {
 	private Collection<Seller> sellers;
 	private Collection<String> category;
 	private Collection<String> location;
+	private Collection<String> allFilters;
 	private String favoriteSeller;
 	
 	/**
@@ -31,6 +33,8 @@ public class DiscountFinder {
 		this.database = db.getData();
 		this.sellers = db.getSellers();
 		this.category = db.getCategories();
+		this.allFilters = new ArrayList<String>();
+		
 	}
 	
 	public DiscountFinder(Collection<Item> data) {
@@ -183,7 +187,5 @@ public class DiscountFinder {
 		}
 	}
 	
-	
-
 	
 }
