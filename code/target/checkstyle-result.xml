@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/Users/destiny/Desktop/CS3211DiscountFinder/code/src/main/java/edu/westga/cs3211/discountFinder/Main.java">
+</file>
+<file name="/Users/destiny/Desktop/CS3211DiscountFinder/code/src/main/java/edu/westga/cs3211/discountFinder/model/DiscountFinder.java">
+</file>
+<file name="/Users/destiny/Desktop/CS3211DiscountFinder/code/src/main/java/edu/westga/cs3211/discountFinder/model/Database.java">
+</file>
+<file name="/Users/destiny/Desktop/CS3211DiscountFinder/code/src/main/java/edu/westga/cs3211/discountFinder/model/Seller.java">
+</file>
+<file name="/Users/destiny/Desktop/CS3211DiscountFinder/code/src/main/java/edu/westga/cs3211/discountFinder/model/Item.java">
+</file>
+<file name="/Users/destiny/Desktop/CS3211DiscountFinder/code/src/main/java/edu/westga/cs3211/discountFinder/view/codebehind/MainWindow.java">
+</file>
+</checkstyle>
