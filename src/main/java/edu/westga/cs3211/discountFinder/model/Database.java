@@ -37,6 +37,12 @@ public class Database {
 		this.data.add(new Item("Flower Pot Large", 100.00, 82.50, store2,"Outdoor"));
 		this.data.add(new Item("Pizza", 5.00, 2.50, store3, "Grocery"));
 		this.data.add(new Item("Califlower Pizza", 10.00, 7.75, store3,"Grocery"));
+		this.data.add(new Item("Key Chain", 3.00, 1.50, store1, "Misc"));
+		this.data.add(new Item("Flower Pot Large", 10.00, 8.75, store1, "Outdoor"));
+		this.data.add(new Item("Key Chain", 20.00, 15.00, store2,"Misc"));
+		this.data.add(new Item("11 Wick Candle", 100.00, 82.50, store2,"Decor"));
+		this.data.add(new Item("Applesauce", 5.00, 2.50, store3, "Grocery"));
+		this.data.add(new Item("Hot Cheetos", 10.00, 7.75, store3,"Grocery"));
 		
 		
 		this.categories = new ArrayList<String>();

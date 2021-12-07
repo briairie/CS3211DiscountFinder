@@ -107,7 +107,7 @@ public class DiscountFinder {
 	 * @return collection of items
 	 */
 	public Collection<Item> getItems() {
-		return this.database;
+		return this.sortItems(this.database);
 	}
 
 	/**
