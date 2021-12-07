@@ -1,0 +1,74 @@
+Name: Add Filter
+ 
+Context: All discounts are currently displayed, and filter search bar is available for user to limit discounts with a specified filter. Radio Buttons are listed below the search bar for the user to indicate whether the Seller, Category, or Distance filter is being used
+ 
+Primary Flow:
+(1)  User selects the radio button associated with how they would like to filter discounts
+(2)  User enters the filter term they would like to use to filter discounts
+(3)  User presses the Add filter button
+(4)  Filter is displayed below the search bar and items are filtered accordingly
+ 
+Alternative Flow:
+(a4) If a filter radio button is not selected, display error message notifying user that they must select a filter to use
+ 
+(b4) If a filter term is not entered in the filter bar, display error message notifying user that they must specify the filter term they wish to filter by
+ 
+
+ 
+———————————————————————————————
+
+Name: Delete Filter
+ 
+Context: All discounts that correlate with the currently added filters are being displayed to the user. Current filters are being displayed under the filter bar
+ 
+Primary Flow:
+(1)  User selects the X located beside the filter name  
+(2)  Filter is removed from below the filter bar
+(3)  Discounts are updated to display only ones associated with the current filters
+ 
+Alternative Flow:
+            (a3) If no filters remain, all discounts are displayed to the user.
+ 
+ 
+ 
+———————————————————————————————
+
+Name: Clear Filters
+ 
+Context: All discounts that correlate with the currently added filters are being displayed to the user. Current filters are being displayed under the filter bar
+ 
+Primary Flow:
+(1)  User selects the Clear Filters button
+(2)  All filters are removed from below the filter bar
+(3)  All discounts are displayed to the user
+ 
+Alternative Flow: N/A 
+
+———————————————————————————————— 
+
+Name: Filter Discounts
+ 
+Context: User is on the main page of the application where all discounts are displayed.
+ 
+Primary Flow:
+(1)  User adds their desired filter
+(2)  All discounts associated with the specified filter term are displayed
+ 
+Alternative Flow:
+(a2) If there are no current discounts and a filter term is currently in the filter search bar with a radio button selected, inform the user there are no current discounts.
+ 
+(b2) If there are current discounts and a filter term is entered in the filter search bar with a radio button selected, but no discounts are associated to the specified filter term, inform the user there were no discounts found for this filter term.
+ 
+ 
+—————————————————————————————————
+ 
+Name: Favorite a Seller
+ 
+Context: User has selected the Seller radio button and entered their desired seller name into the text bar. Add Filter button was then pressed, and all current discounts associated to the seller are being displayed to the user
+ 
+Primary Flow:
+(1)  User selects the star icon next to the Seller name
+(2)  The seller is added to the user’s favorites list
+ 
+Alternative Flow:
+(a2) If the seller is already listed on the user’s favorites list, it is unfavorited and removed from the user’s list of favorited sellers
