@@ -113,6 +113,10 @@ public class MainWindow {
 		
 		this.filterComboBox.setValue("");
 		
+		this.filterPane1.visibleProperty().set(false);
+		this.filterPane2.visibleProperty().set(false);
+		this.filterPane3.visibleProperty().set(false);
+		
 		this.filter();
     }
 
