@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class DiscountFinder {
 	private Collection<Item> database;
-	private Collection<String> sellers;
+	private Collection<Seller> sellers;
 	private Collection<String> category;
 	private Collection<String> location;
 	
@@ -42,12 +42,16 @@ public class DiscountFinder {
 	 * preconditions: name != null && category != null && location != null
 	 * postconditions: none
 	 * @param name the name
+	 * @param seller the seller
+	 * @param category the category
+	 * @param distance the distance
 	 * @return filter list
 	 */
-	public Collection<Item> filter(String name, String seller, String category, String location){
+	public Collection<Item> filter(String name, String seller, String category, double distance){
 		Collection<Item> filtered = filterByName(name, this.database);
 		filtered = this.filterBySeller(seller, filtered);
 		filtered = this.filterByCategory(category, filtered);
+		filtered = this.filterByDistance(distance, filtered);
 		
 		return filtered;
 	}
@@ -66,7 +70,7 @@ public class DiscountFinder {
 		
 		return items
 				.stream()
-				.filter(item -> item.getSeller().toLowerCase().contains(seller.toLowerCase()))
+				.filter(item -> item.getSeller().getName().toLowerCase().contains(seller.toLowerCase()))
 				.collect(Collectors.toList());
 	}
 
@@ -78,6 +82,16 @@ public class DiscountFinder {
 		return items
 				.stream()
 				.filter(item -> item.getCategory().toLowerCase().contains(category.toLowerCase()))
+				.collect(Collectors.toList());
+	}
+	
+	private Collection<Item> filterByDistance(double distance, Collection<Item> items){	
+		if(distance == 0) {
+			return items;
+		}
+		return items
+				.stream()
+				.filter(item -> item.getSeller().getClosetStoreDistance() <= distance)
 				.collect(Collectors.toList());
 	}
 	
@@ -93,7 +107,7 @@ public class DiscountFinder {
 	}
 
 	/**
-	 * Gets the sellers 
+	 * Gets the seller names
 	 *
 	 * preconditions:  none
 	 * postconditions: none
@@ -101,7 +115,7 @@ public class DiscountFinder {
 	 * @return the sellers
 	 */
 	public Collection<String> getSellers() {
-		return sellers;
+		return sellers.stream().map(Seller::getName).collect(Collectors.toList());
 	}
 
 	/**
@@ -110,9 +124,9 @@ public class DiscountFinder {
 	 * preconditions:  none
 	 * postconditions: none
 	 *
-	 * @return the category
+	 * @return the categories
 	 */
-	public Collection<String> getCategory() {
+	public Collection<String> getCategories() {
 		return category;
 	}
 

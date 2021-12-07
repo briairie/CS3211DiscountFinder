@@ -13,7 +13,7 @@ public class Item {
 	private String name;
 	private double marketPrice;
 	private double currentPrice;
-	private String seller;
+	private Seller seller;
 	private String category;
 	
 	/**
@@ -26,13 +26,13 @@ public class Item {
 	 * @param currentPrice		the current price
 	 * @param seller			the seller
 	 */
-	public Item(String name, double marketPrice, double currentPrice, String seller,  String category) {
+	public Item(String name, double marketPrice, double currentPrice, Seller seller,  String category) {
 		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Name cannot be null or empty");
 		}
 		
-		if (seller == null || seller.isEmpty()) {
-			throw new IllegalArgumentException("Seller cannot be null or empty");
+		if (seller == null) {
+			throw new IllegalArgumentException("Seller cannot be null");
 		}
 		
 		if (category == null || category.isEmpty()) {
@@ -86,7 +86,7 @@ public class Item {
 	 * postconditions: none
 	 * @return the seller
 	 */
-	public String getSeller() {
+	public Seller getSeller() {
 		return this.seller;
 	}
 	
@@ -120,7 +120,7 @@ public class Item {
 		String discount = this.formatPercent(this.getDiscount());
 		String marketPriceString = this.formatMoney(this.marketPrice);
 		String currentPriceString = this.formatMoney(this.currentPrice);
-		return this.name + " " + marketPriceString + " " + currentPriceString + " " + discount + " " + this.seller;
+		return this.name + " " + marketPriceString + " " + currentPriceString + " " + discount + " " + this.seller.getName();
 	}
 
 	
