@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Hyperlink;
@@ -74,6 +75,23 @@ public class MainWindow {
 
 	@FXML
 	private ComboBox<String> filterComboBox;
+	
+	private Button btnStoreFilter;
+
+    @FXML
+    private Button btnCategoryFilter;
+
+    @FXML
+    private Button btnDistanceFilter;
+	
+	@FXML
+    private RadioButton storeRadioBtn;
+
+    @FXML
+    private RadioButton categoryRadioBtn;
+
+    @FXML
+    private RadioButton distanceRadioBtn;
 
 	@FXML
 	void filterName(ActionEvent event) {
@@ -87,8 +105,25 @@ public class MainWindow {
 			return;
 		}
 		this.sellerFilter = this.filterComboBox.getValue();
-		this.nextFilterLabel.textProperty().setValue("Seller: " + this.sellerFilter);
-		this.nextFilterPane.visibleProperty().set(true);
+		this.filterLabel1.textProperty().setValue("Seller: " + this.sellerFilter);
+		this.filterPane1.visibleProperty().set(true);
+	}
+	
+	private void addCategoryFilter() {
+		
+		if(!this.categoryFilter.isEmpty() || isFilterEmpty()) {
+			return;
+		}
+		this.categoryFilter = this.filterComboBox.getValue();
+		this.filterLabel2.textProperty().setValue("Category: " + this.categoryFilter);
+		this.filterPane2.visibleProperty().set(true);
+	}
+	
+	private void addDistanceFilter() {
+		
+		this.locationFilter = Integer.parseInt(this.filterComboBox.getValue());
+		this.filterLabel3.textProperty().setValue("Distance: " + this.locationFilter);
+		this.filterPane3.visibleProperty().set(true);
 	}
 
 	private boolean isFilterEmpty() {
@@ -96,23 +131,8 @@ public class MainWindow {
 		return filter == null || filter.isEmpty();
 	}
 
-	private void getFreeFilterPane() {
-		if (!this.filterPane1.visibleProperty().getValue()) {
-			this.nextFilterPane = this.filterPane1;
-			this.nextFilterLabel = this.filterLabel1;
-		} else if (!this.filterPane2.visibleProperty().getValue()) {
-			this.nextFilterPane = this.filterPane2;
-			this.nextFilterLabel = this.filterLabel2;
-		} else {
-			this.nextFilterPane = this.filterPane3;
-			this.nextFilterLabel = this.filterLabel3;
-		}
-		
-	}
-
 	@FXML
 	void addFilter(ActionEvent event) {
-		this.getFreeFilterPane();
 		this.addSellerFilter();
 		this.filter();
 	}
@@ -138,8 +158,44 @@ public class MainWindow {
 		this.resultListView.setItems(FXCollections.observableArrayList(filteredItems));
 	}
 	
+	@FXML
+    void deleteCategoryFilter(ActionEvent event) {
+		this.filterComboBox.setValue("");
+		this.categoryFilter = "";
+		this.filter();
+		this.btnCategoryFilter.visibleProperty().set(false);
+    }
+
+    @FXML
+    void deleteDistanceFilter(ActionEvent event) {
+    	this.filterComboBox.setValue("");
+    	this.locationFilter = 0;
+		this.filter();
+		this.btnDistanceFilter.visibleProperty().set(false);
+    }
 	
+	@FXML
+    void deleteStoreFilter(ActionEvent event) {
+    	this.filterComboBox.setValue("");
+    	this.sellerFilter = "";
+		this.filter();
+		this.filterPane1.visibleProperty().set(false);
+    }	
 	
+	@FXML
+    void categoryFilterTypeSelected(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void distanceFilterTypeSelected(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void storeFilterTypeSelected(ActionEvent event) {
+
+    }
 	
 
 	/**
