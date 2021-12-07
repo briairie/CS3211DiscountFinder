@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,6 +28,8 @@ public class MainWindow {
 	private String sellerFilter = "";
 	private String categoryFilter = "";
 	private double locationFilter = 0;
+	private Pane nextFilterPane;
+	private Label nextFilterLabel;
 
 	public static final String NO_MATCHES_TEXT = "No matches";
 
@@ -41,6 +44,25 @@ public class MainWindow {
 
 	@FXML
 	private Label itemLabel;
+	
+	@FXML
+    private Pane filterPane1;
+
+    @FXML
+    private Label filterLabel1;
+
+    @FXML
+    private Pane filterPane2;
+
+    @FXML
+    private Label filterLabel2;
+
+    @FXML
+    private Pane filterPane3;
+
+    @FXML
+    private Label filterLabel3;
+
 
 	@FXML
 	private ListView<Item> resultListView;
@@ -54,9 +76,33 @@ public class MainWindow {
 		this.filter();
 	}
 
+	private void addSellerFilter() {
+		if(!this.sellerFilter.isEmpty()) {
+			return;
+		}
+		this.sellerFilter = this.filterComboBox.getValue();
+		this.nextFilterLabel.textProperty().setValue("Seller: " + this.sellerFilter);
+		this.nextFilterPane.visibleProperty().set(true);
+	}
+
+	private void getFreeFilterPane() {
+		if (!this.filterPane1.visibleProperty().getValue()) {
+			this.nextFilterPane = this.filterPane1;
+			this.nextFilterLabel = this.filterLabel1;
+		} else if (!this.filterPane2.visibleProperty().getValue()) {
+			this.nextFilterPane = this.filterPane2;
+			this.nextFilterLabel = this.filterLabel2;
+		} else {
+			this.nextFilterPane = this.filterPane3;
+			this.nextFilterLabel = this.filterLabel3;
+		}
+		
+	}
+
 	@FXML
 	void addFilter(ActionEvent event) {
-		this.sellerFilter = this.filterComboBox.getValue();
+		this.getFreeFilterPane();
+		this.addSellerFilter();
 		this.filter();
 	}
 
@@ -77,6 +123,9 @@ public class MainWindow {
 	@FXML
 	public void initialize() {
 		this.discountFinder = new DiscountFinder();
+		this.filterPane1.visibleProperty().set(false);
+		this.filterPane2.visibleProperty().set(false);
+		this.filterPane3.visibleProperty().set(false);
 		this.resultListView.setItems(FXCollections.observableArrayList(this.discountFinder.getItems()));
 		this.searchbar.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.filter();
