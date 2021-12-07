@@ -1,8 +1,9 @@
 package edu.westga.cs3211.discountFinder.model;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.ArrayList;
 
 /** 
  * Discount Finder
@@ -15,6 +16,7 @@ public class DiscountFinder {
 	private Collection<Seller> sellers;
 	private Collection<String> category;
 	private Collection<String> location;
+	private String favoriteSeller;
 	
 	/**
 	 * 
@@ -52,6 +54,8 @@ public class DiscountFinder {
 		filtered = this.filterBySeller(seller, filtered);
 		filtered = this.filterByCategory(category, filtered);
 		filtered = this.filterByDistance(distance, filtered);
+		
+		filtered = this.sortItems(filtered);
 		
 		return filtered;
 	}
@@ -141,4 +145,45 @@ public class DiscountFinder {
 	public Collection<String> getLocation() {
 		return location;
 	}
+
+	/**
+	 * Sets the favoriteSeller 
+	 *
+	 * preconditions:  none
+	 * postconditions: none
+	 *
+	 * @param favoriteSeller the favoriteSeller to set
+	 */
+	public void setFavoriteSeller(String favoriteSeller) {
+		this.favoriteSeller = favoriteSeller;
+	}
+	
+	private Collection<Item> sortItems(Collection<Item> items) {
+		if(this.favoriteSeller == null || this.favoriteSeller.isEmpty()) {
+			Collections.sort((List<Item>) items);
+			return items;
+		}else {
+			 List<Item> favoriteItems = items
+			 	.stream()
+				.filter(item -> item.getSeller().getName().toLowerCase().contains(this.favoriteSeller.toLowerCase()))
+				.collect(Collectors.toList());
+			 
+			 List<Item> restOfItems = items
+					 	.stream()
+						.filter(item -> !item.getSeller().getName().toLowerCase().contains(this.favoriteSeller.toLowerCase()))
+						.collect(Collectors.toList());
+			 
+			 Collections.sort(favoriteItems);
+			 Collections.sort(restOfItems);
+			 
+			 favoriteItems.addAll(restOfItems);
+			 
+			 return favoriteItems;
+			 
+		}
+	}
+	
+	
+
+	
 }
