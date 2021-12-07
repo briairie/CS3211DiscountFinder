@@ -1,0 +1,11 @@
+1 - As a Shopper, I want to find discounts, so that I can save money
+2 - As a Shopper, I want to limit discounts based on item, so that I can find discounts for a specific item
+3 - As a Shopper, I want to limit discounts based on seller, so that I can find discounts for a specific seller
+4 - As a Shopper, I want to limit discounts based on a category of items, so that I can find discounts for a category of item
+5 - As a Shopper, I want to limit discounts based on distance to seller, so that I can avoid seeing discounts outside of my area
+6 - As a Shopper, I want to watch an item, so that I can be notified of new discounts for that item
+7 - As a Shopper, I want to favorite a seller, so that it is easier to find discounts for that seller
+8 - As a Shopper, I want to watch a seller, so that I can be notified of new discounts for that seller
+9 - As a Shopper, I want to limit discounts based on price range, so that I can avoid discounts that are too expensive
+10 - As a Shopper, I want to limit discounts based on brand, so that I can get discounts for a preferred brand
+11 - As a Shopper, I want to scan an item, so that I can easily search for discounts on a specific item while looking at the item
