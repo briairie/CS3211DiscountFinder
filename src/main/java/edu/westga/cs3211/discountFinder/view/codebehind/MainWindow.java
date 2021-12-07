@@ -5,10 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.skin.ComboBoxListViewSkin;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 
 import java.util.Collection;
 
@@ -76,12 +82,18 @@ public class MainWindow {
 	}
 
 	private void addSellerFilter() {
-		if(!this.sellerFilter.isEmpty() || this.filterComboBox.getValue() == null) {
+		
+		if(!this.sellerFilter.isEmpty() || isFilterEmpty()) {
 			return;
 		}
 		this.sellerFilter = this.filterComboBox.getValue();
 		this.nextFilterLabel.textProperty().setValue("Seller: " + this.sellerFilter);
 		this.nextFilterPane.visibleProperty().set(true);
+	}
+
+	private boolean isFilterEmpty() {
+		String filter = this.filterComboBox.getValue();
+		return filter == null || filter.isEmpty();
 	}
 
 	private void getFreeFilterPane() {
@@ -127,6 +139,8 @@ public class MainWindow {
 	}
 	
 	
+	
+	
 
 	/**
 	 * Handle initialization checks for the JavaFX components, and perform any
@@ -146,6 +160,52 @@ public class MainWindow {
 		this.searchbar.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.filter();
 		});
-		this.filterComboBox.setItems(FXCollections.observableArrayList(this.discountFinder.getSellers()));
+		selectStoreList();
 	}
+
+	private void selectStoreList() {
+		this.filterComboBox.setItems(FXCollections.observableArrayList(this.discountFinder.getSellers()));
+		this.filterComboBox.setCellFactory(lv ->
+        	new ListCell<String>() { 
+            private HBox graphic;
+            {
+                Label label = new Label();
+                label.textProperty().bind(itemProperty());
+                label.setMaxWidth(Double.POSITIVE_INFINITY);
+                
+                Hyperlink cross = new Hyperlink("\u2B50");
+                cross.setVisited(true);
+                cross.setOnAction(event -> {
+                	String item = getItem();
+                	setFavoriteSeller(item);
+                });
+                	
+                
+                graphic = new HBox(label, cross);
+                HBox.setHgrow(label, Priority.ALWAYS);
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            }
+            
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(graphic);
+                }
+            }
+        	});
+		ComboBoxListViewSkin<String> skin = new ComboBoxListViewSkin<String>(this.filterComboBox);
+		skin.setHideOnClick(false);
+		this.filterComboBox.setSkin(skin);
+		
+	}
+	
+	
+	protected void setFavoriteSeller(String item) {
+		this.discountFinder.setFavoriteSeller(item);
+		this.filter();
+	}
+	
 }

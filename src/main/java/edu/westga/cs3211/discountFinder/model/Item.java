@@ -9,7 +9,7 @@ import java.text.NumberFormat;
  * @version Fall 2021
  *
  */
-public class Item {
+public class Item implements Comparable<Item> {
 	private String name;
 	private double marketPrice;
 	private double currentPrice;
@@ -121,6 +121,11 @@ public class Item {
 		String marketPriceString = this.formatMoney(this.marketPrice);
 		String currentPriceString = this.formatMoney(this.currentPrice);
 		return this.name + " " + marketPriceString + " " + currentPriceString + " " + discount + " " + this.seller.getName();
+	}
+
+	@Override
+	public int compareTo(Item other) {
+		return this.name.compareTo(other.name);
 	}
 
 	
